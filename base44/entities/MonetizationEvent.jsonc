@@ -5,6 +5,12 @@
     "lead_key": {
       "type": "string"
     },
+    "lp_lead_id": {
+      "type": "string"
+    },
+    "matched_phone": {
+      "type": "string"
+    },
     "channel": {
       "type": "string",
       "enum": [
@@ -35,6 +41,10 @@
     },
     "list_name": {
       "type": "string"
+    },
+    "accrued": {
+      "type": "boolean",
+      "default": false
     }
   },
   "required": [

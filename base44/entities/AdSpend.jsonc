@@ -53,6 +53,10 @@
     },
     "structure_tokens": {
       "type": "string"
+    },
+    "unattributed": {
+      "type": "boolean",
+      "default": false
     }
   },
   "required": [

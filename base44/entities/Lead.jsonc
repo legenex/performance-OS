@@ -17,6 +17,16 @@
     "tc_id": {
       "type": "string"
     },
+    "phone": {
+      "type": "string"
+    },
+    "phone_normalized": {
+      "type": "string"
+    },
+    "dupe_count": {
+      "type": "number",
+      "default": 0
+    },
     "created_at": {
       "type": "string",
       "format": "date-time"
@@ -148,6 +158,10 @@
     },
     "net_profit": {
       "type": "number"
+    },
+    "payout_accrued": {
+      "type": "boolean",
+      "default": false
     },
     "billing_cycle": {
       "type": "string"
