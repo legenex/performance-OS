@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Plus, Map } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { logAudit } from "@/lib/audit";
 
 const EMPTY = { state_code: "", state_name: "", active: true, notes: "" };
 
@@ -26,12 +27,14 @@ export default function StatesTiers() {
 
   async function toggle(s) {
     await base44.entities.StateConfig.update(s.id, { active: !s.active });
+    logAudit("update", "StateConfig", s.id, { active: !s.active });
     load();
   }
 
   async function save() {
     if (!form.state_code.trim()) { toast({ title: "State code required", variant: "destructive" }); return; }
-    await base44.entities.StateConfig.create({ ...form, state_code: form.state_code.toUpperCase() });
+    const created = await base44.entities.StateConfig.create({ ...form, state_code: form.state_code.toUpperCase() });
+    logAudit("create", "StateConfig", created?.id, form);
     setOpen(false); setForm(EMPTY); load();
     toast({ title: "State added" });
   }

@@ -6,6 +6,12 @@ import { parseAdSpendSids } from "@/functions/parseAdSpendSids";
 import { runPayoutAccrual } from "@/functions/runPayoutAccrual";
 import { runCplAllocation } from "@/functions/runCplAllocation";
 import { runDailyRollup } from "@/functions/runDailyRollup";
+import { syncSheets } from "@/functions/syncSheets";
+import { importLeadByteParity } from "@/functions/importLeadByteParity";
+import { runWeeklyRecon } from "@/functions/runWeeklyRecon";
+import { syncStripePayments } from "@/functions/syncStripePayments";
+import { syncRingba } from "@/functions/syncRingba";
+import { syncAdPlatforms } from "@/functions/syncAdPlatforms";
 import { useToast } from "@/components/ui/use-toast";
 
 const FN_MAP = {
@@ -14,6 +20,12 @@ const FN_MAP = {
   runPayoutAccrual,
   runCplAllocation,
   runDailyRollup,
+  syncSheets,
+  importLeadByteParity,
+  runWeeklyRecon,
+  syncStripePayments,
+  syncRingba,
+  syncAdPlatforms,
 };
 
 export default function SyncNowButton({ fn, onDone }) {

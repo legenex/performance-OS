@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { UserPlus, Users } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { logAudit } from "@/lib/audit";
 
 const APP_ROLES = ["owner", "ops", "media_buyer", "infra"];
 
@@ -43,6 +44,7 @@ export default function UsersRoles() {
 
   async function setAppRole(u, role) {
     await base44.entities.User.update(u.id, { app_role: role });
+    logAudit("update", "User", u.id, { app_role: role, email: u.email });
     load();
     toast({ title: "Role updated", description: `${u.email} → ${role}` });
   }
@@ -83,7 +85,7 @@ export default function UsersRoles() {
                   <div className="text-sm font-medium text-foreground truncate">{u.full_name || u.email}</div>
                   <div className="text-xs text-graphite-muted truncate">{u.email} · platform: {u.role}</div>
                 </div>
-                <Select value={u.app_role || "owner"} onValueChange={(v) => setAppRole(u, v)}>
+                <Select value={u.app_role || (u.role === "admin" ? "owner" : "ops")} onValueChange={(v) => setAppRole(u, v)}>
                   <SelectTrigger className="w-36 bg-graphite-well border-graphite-border text-foreground"><SelectValue /></SelectTrigger>
                   <SelectContent className="bg-graphite-elevated border-graphite-border">
                     {APP_ROLES.map((r) => <SelectItem key={r} value={r} className="text-foreground">{r}</SelectItem>)}

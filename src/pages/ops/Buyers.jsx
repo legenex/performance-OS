@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Plus, Pencil, Users } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { logAudit } from "@/lib/audit";
 
 const EMPTY = { name: "", buyer_id: "", status: "active", ipl_fee: "", billing_terms: "", active_states: "", price_bands: "" };
 
@@ -31,8 +32,13 @@ export default function Buyers() {
   async function save() {
     if (!form.name.trim()) { toast({ title: "Name required", variant: "destructive" }); return; }
     const payload = { ...form, ipl_fee: form.ipl_fee === "" ? null : Number(form.ipl_fee) };
-    if (editing) await base44.entities.Buyer.update(editing.id, payload);
-    else await base44.entities.Buyer.create(payload);
+    if (editing) {
+      await base44.entities.Buyer.update(editing.id, payload);
+      logAudit("update", "Buyer", editing.id, payload);
+    } else {
+      const created = await base44.entities.Buyer.create(payload);
+      logAudit("create", "Buyer", created?.id, payload);
+    }
     setOpen(false); load();
     toast({ title: editing ? "Buyer updated" : "Buyer created" });
   }

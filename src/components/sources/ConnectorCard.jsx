@@ -74,7 +74,9 @@ export default function ConnectorCard({ source, run, webhook, onRun }) {
 
       {/* Actions */}
       {source.kind !== 'webhook' && (
-        <SyncNowButton fn={source.fn} onDone={onRun} />
+        source.fn
+          ? <SyncNowButton fn={source.fn} onDone={onRun} />
+          : <span className="text-[10px] font-medium px-2 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">Pending — {source.name === 'Xero' ? 'use Import Center' : 'not configured'}</span>
       )}
     </div>
   );

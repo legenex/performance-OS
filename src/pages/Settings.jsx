@@ -9,7 +9,6 @@ import PayoutRulesPanel from "@/components/settings/PayoutRulesPanel";
 import BudgetsPanel from "@/components/settings/BudgetsPanel";
 import BillingCyclesPanel from "@/components/settings/BillingCyclesPanel";
 import CreativeOsSetting from "@/components/settings/CreativeOsSetting";
-import UsersRoles from "@/pages/UsersRoles";
 
 const TABS = [
   { value: "general", label: "General" },
@@ -20,7 +19,6 @@ const TABS = [
   { value: "budgets", label: "Budgets & Thresholds" },
   { value: "billing", label: "Billing Cycles" },
   { value: "creativeos", label: "CreativeOS Webhook" },
-  { value: "users", label: "Users & Roles" },
 ];
 
 export default function Settings() {
@@ -48,7 +46,6 @@ export default function Settings() {
           <TabsContent value="budgets" className="mt-0"><div className="max-w-3xl"><BudgetsPanel /></div></TabsContent>
           <TabsContent value="billing" className="mt-0"><div className="max-w-3xl"><BillingCyclesPanel /></div></TabsContent>
           <TabsContent value="creativeos" className="mt-0"><div className="max-w-2xl"><CreativeOsSetting /></div></TabsContent>
-          <TabsContent value="users" className="mt-0"><UsersRoles /></TabsContent>
         </div>
       </Tabs>
     </div>

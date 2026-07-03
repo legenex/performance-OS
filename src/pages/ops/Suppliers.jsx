@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Plus, Pencil, Boxes } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { logAudit } from "@/lib/audit";
 
 const MODELS = ["revshare_revenue", "revshare_net_profit", "flat_accepted", "flat_posted", "none"];
 const EMPTY = { sid: "", name: "", email: "", status: "active", payout_model: "none", payout_value: "", clawback_on_return: false };
@@ -33,8 +34,13 @@ export default function Suppliers() {
   async function save() {
     if (!form.sid.trim() || !form.name.trim()) { toast({ title: "SID and name required", variant: "destructive" }); return; }
     const payload = { ...form, payout_value: form.payout_value === "" ? null : Number(form.payout_value) };
-    if (editing) await base44.entities.Supplier.update(editing.id, payload);
-    else await base44.entities.Supplier.create(payload);
+    if (editing) {
+      await base44.entities.Supplier.update(editing.id, payload);
+      logAudit("update", "Supplier", editing.id, payload);
+    } else {
+      const created = await base44.entities.Supplier.create(payload);
+      logAudit("create", "Supplier", created?.id, payload);
+    }
     setOpen(false); load();
     toast({ title: editing ? "Supplier updated" : "Supplier created" });
   }
