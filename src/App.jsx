@@ -18,8 +18,6 @@ import CashBanking from '@/pages/CashBanking';
 import Receivables from '@/pages/Receivables';
 import Payables from '@/pages/Payables';
 import TruePnL from '@/pages/TruePnL';
-import ImportCenter from '@/pages/ImportCenter';
-import DataSources from '@/pages/DataSources';
 import Settings from '@/pages/Settings';
 import AdCommand from '@/pages/AdCommand';
 import AdAccounts from '@/pages/AdAccounts';
@@ -27,7 +25,23 @@ import CampaignExplorer from '@/pages/CampaignExplorer';
 import CreativeIntelligence from '@/pages/CreativeIntelligence';
 import KnowledgeBase from '@/pages/KnowledgeBase';
 import OpsBoard from '@/pages/OpsBoard';
-import PipelineHealth from '@/pages/PipelineHealth';
+// PERFORMANCE
+import PerformanceOverview from '@/pages/performance/PerformanceOverview';
+import BuyerReport from '@/pages/performance/BuyerReport';
+import SupplierPerformance from '@/pages/performance/SupplierPerformance';
+import StateReport from '@/pages/performance/StateReport';
+import LeadQuality from '@/pages/performance/LeadQuality';
+import CampaignTrueMargin from '@/pages/performance/CampaignTrueMargin';
+import ReportBuilder from '@/pages/performance/ReportBuilder';
+// OPS
+import Buyers from '@/pages/ops/Buyers';
+import Suppliers from '@/pages/ops/Suppliers';
+import StatesTiers from '@/pages/ops/StatesTiers';
+import Qualification from '@/pages/ops/Qualification';
+import BillingRecon from '@/pages/ops/BillingRecon';
+// SYSTEM / AI
+import UsersRoles from '@/pages/UsersRoles';
+import DailyBriefing from '@/pages/DailyBriefing';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -59,11 +73,19 @@ const AuthenticatedApp = () => {
         <Route element={<AppLayout />}>
           <Route element={<RoleRoute />}>
             <Route path="/" element={<HomeRedirect />} />
-            {/* MONEY */}
+            {/* FINANCES */}
             <Route path="/cash-banking" element={<CashBanking />} />
             <Route path="/receivables" element={<Receivables />} />
             <Route path="/payables" element={<Payables />} />
             <Route path="/pnl" element={<TruePnL />} />
+            {/* PERFORMANCE */}
+            <Route path="/performance" element={<PerformanceOverview />} />
+            <Route path="/performance/buyers" element={<BuyerReport />} />
+            <Route path="/performance/suppliers" element={<SupplierPerformance />} />
+            <Route path="/performance/states" element={<StateReport />} />
+            <Route path="/performance/lead-quality" element={<LeadQuality />} />
+            <Route path="/performance/campaign-margin" element={<CampaignTrueMargin />} />
+            <Route path="/performance/report-builder" element={<ReportBuilder />} />
             {/* AD INTELLIGENCE */}
             <Route path="/ad-command" element={<AdCommand />} />
             <Route path="/ad-accounts" element={<AdAccounts />} />
@@ -72,11 +94,16 @@ const AuthenticatedApp = () => {
             <Route path="/knowledge-base" element={<KnowledgeBase />} />
             {/* OPS */}
             <Route path="/ops-board" element={<OpsBoard />} />
-            <Route path="/pipeline-health" element={<PipelineHealth />} />
-            <Route path="/import" element={<ImportCenter />} />
-            <Route path="/data-sources" element={<DataSources />} />
+            <Route path="/buyers" element={<Buyers />} />
+            <Route path="/suppliers" element={<Suppliers />} />
+            <Route path="/states-tiers" element={<StatesTiers />} />
+            <Route path="/qualification" element={<Qualification />} />
+            <Route path="/billing-recon" element={<BillingRecon />} />
             {/* SYSTEM */}
             <Route path="/settings" element={<Settings />} />
+            <Route path="/users" element={<UsersRoles />} />
+            {/* AI */}
+            <Route path="/daily-briefing" element={<DailyBriefing />} />
           </Route>
         </Route>
       </Route>

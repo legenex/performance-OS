@@ -2,21 +2,29 @@
 // app_role comes from the User entity; platform admins are treated as "owner".
 // Roles:
 //   owner      → everything
-//   ops        → OPS + PERFORMANCE + AD INTELLIGENCE + read-only MONEY
+//   ops        → OPS + PERFORMANCE + AD INTELLIGENCE + read-only Finances
 //   media_buyer→ AD INTELLIGENCE + Campaign True Margin + Overview + Ad Briefing (home = Ad Command)
-//   infra      → SYSTEM + Pipeline Health
+//   infra      → SYSTEM
 
 export const ROLES = ["owner", "ops", "media_buyer", "infra"];
 
 // Every route key used across the app, mapped to which roles may see it.
-// "*" means all authenticated users.
 export const ROUTE_ACCESS = {
-  // MONEY
-  "/": ["owner", "ops", "media_buyer"],            // Command Center / Overview
-  "/cash-banking": ["owner", "ops"],               // ops read-only
+  // FINANCES
+  "/": ["owner", "ops", "media_buyer"],            // Command Center
+  "/cash-banking": ["owner", "ops"],
   "/receivables": ["owner", "ops"],
   "/payables": ["owner", "ops"],
   "/pnl": ["owner", "ops"],
+
+  // PERFORMANCE
+  "/performance": ["owner", "ops", "media_buyer"],       // Overview
+  "/performance/buyers": ["owner", "ops"],
+  "/performance/suppliers": ["owner", "ops"],
+  "/performance/states": ["owner", "ops"],
+  "/performance/lead-quality": ["owner", "ops"],
+  "/performance/campaign-margin": ["owner", "ops", "media_buyer"],
+  "/performance/report-builder": ["owner", "ops"],
 
   // AD INTELLIGENCE
   "/ad-command": ["owner", "ops", "media_buyer"],
@@ -27,12 +35,18 @@ export const ROUTE_ACCESS = {
 
   // OPS
   "/ops-board": ["owner", "ops"],
-  "/pipeline-health": ["owner", "ops", "infra"],
-  "/import": ["owner", "ops"],
-  "/data-sources": ["owner", "ops", "infra"],
+  "/buyers": ["owner", "ops"],
+  "/suppliers": ["owner", "ops"],
+  "/states-tiers": ["owner", "ops"],
+  "/qualification": ["owner", "ops"],
+  "/billing-recon": ["owner", "ops"],
 
   // SYSTEM
   "/settings": ["owner", "infra"],
+  "/users": ["owner"],
+
+  // AI
+  "/daily-briefing": ["owner", "ops", "media_buyer"],
 };
 
 // Default landing route per role.
@@ -40,15 +54,15 @@ export const ROLE_HOME = {
   owner: "/",
   ops: "/ops-board",
   media_buyer: "/ad-command",
-  infra: "/pipeline-health",
+  infra: "/settings",
 };
 
 // Resolve the effective app role for a user object.
 export function getRole(user) {
-  if (!user) return "ops";
+  if (!user) return "owner";
   // Platform admins get full owner access regardless of app_role.
   if (user.role === "admin") return "owner";
-  return user.app_role || "ops";
+  return user.app_role || "owner";
 }
 
 export function canAccess(user, path) {
@@ -58,9 +72,9 @@ export function canAccess(user, path) {
   return allowed.includes(role);
 }
 
-// MONEY screens are read-only for ops.
+// Finances screens are read-only for ops.
 export function isReadOnly(user, path) {
   const role = getRole(user);
-  const moneyScreens = ["/cash-banking", "/receivables", "/payables", "/pnl"];
-  return role === "ops" && moneyScreens.includes(path);
+  const financeScreens = ["/cash-banking", "/receivables", "/payables", "/pnl"];
+  return role === "ops" && financeScreens.includes(path);
 }

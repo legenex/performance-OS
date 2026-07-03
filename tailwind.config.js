@@ -61,19 +61,28 @@ module.exports = {
           ring: 'hsl(var(--sidebar-ring))'
         },
         graphite: {
-          base: '#0B0D10',
-          panel: '#14171C',
-          lighter: '#1C2028',
-          border: '#252830',
-          muted: '#6B7280'
+          base: '#242B34',      /* page / main background */
+          sidebar: '#1D232B',   /* left sidebar */
+          panel: '#2A313B',     /* panels & cards */
+          elevated: '#313A45',  /* drawers, popovers, modals */
+          lighter: '#313A45',   /* elevated surface (hover, inputs) */
+          well: '#1A2028',      /* inset wells: table headers, code, sparkline backers */
+          border: 'rgba(255,255,255,0.08)',
+          borderStrong: 'rgba(255,255,255,0.14)',
+          muted: '#9AA4B0',     /* muted text */
+          faint: '#5D6772'      /* faint text */
         },
         brand: {
           red: '#E4262C',
-          redLight: '#F87171',
-          green: '#10B981',
+          redHover: '#FF3B41',
+          redSelected: 'rgba(228,38,44,0.12)',
+          redLight: '#FF3B41',
+          green: '#2FBF71',
           greenLight: '#34D399',
-          amber: '#F59E0B',
-          coral: '#F87171'
+          amber: '#F5A623',
+          coral: '#FF4D4F',
+          info: '#4CC3FF',
+          purple: '#A78BFA'
         }
       },
       fontFamily: {

@@ -5,7 +5,7 @@ import ConnectorCard from "@/components/sources/ConnectorCard";
 import { SOURCES } from "@/lib/sources";
 import { getWebhookInfo } from "@/functions/getWebhookInfo";
 
-export default function DataSources() {
+export default function DataSources({ embedded = false }) {
   const [runs, setRuns] = useState({});
   const [webhooks, setWebhooks] = useState({});
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ export default function DataSources() {
 
   return (
     <div>
-      <PageHeader title="Data & Sources" subtitle="Connectors, webhooks, and sync status" />
+      {!embedded && <PageHeader title="Data & Sources" subtitle="Connectors, webhooks, and sync status" />}
 
       {loading ? (
         <div className="h-40 flex items-center justify-center">

@@ -1,58 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHeader from "@/components/shared/PageHeader";
-import SyncNowButton from "@/components/sources/SyncNowButton";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import GeneralPanel from "@/components/settings/GeneralPanel";
+import DataSources from "@/pages/DataSources";
+import ImportCenter from "@/pages/ImportCenter";
+import PipelineHealthPanel from "@/components/settings/PipelineHealthPanel";
+import PayoutRulesPanel from "@/components/settings/PayoutRulesPanel";
+import BudgetsPanel from "@/components/settings/BudgetsPanel";
+import BillingCyclesPanel from "@/components/settings/BillingCyclesPanel";
 import CreativeOsSetting from "@/components/settings/CreativeOsSetting";
-import DataReset from "@/components/settings/DataReset";
-import { useAuth } from "@/lib/AuthContext";
-import { getRole } from "@/lib/roles";
-import { Cog, Clock } from "lucide-react";
+import UsersRoles from "@/pages/UsersRoles";
 
-const ENGINE_JOBS = [
-  { fn: "parseAdSpendSids", name: "SID Parser", desc: "Attribute AdSpend rows to suppliers by campaign SID", schedule: "Daily 02:00 UTC" },
-  { fn: "runPayoutAccrual", name: "Payout Accrual", desc: "One accrual per payable lead & monetization event", schedule: "Daily 02:15 UTC" },
-  { fn: "runCplAllocation", name: "CPL Allocation", desc: "Daily CPL & cost_deduction stamping", schedule: "Daily 02:30 UTC" },
-  { fn: "runDailyRollup", name: "Daily Rollup", desc: "Rebuild analytical rollups from leads", schedule: "Daily 02:45 UTC" },
+const TABS = [
+  { value: "general", label: "General" },
+  { value: "data-sources", label: "Data & Sources" },
+  { value: "import", label: "Import Center" },
+  { value: "pipeline", label: "Pipeline Health" },
+  { value: "payout", label: "Payout Rules" },
+  { value: "budgets", label: "Budgets & Thresholds" },
+  { value: "billing", label: "Billing Cycles" },
+  { value: "creativeos", label: "CreativeOS Webhook" },
+  { value: "users", label: "Users & Roles" },
 ];
 
 export default function Settings() {
-  const { user } = useAuth();
-  const isOwner = getRole(user) === "owner";
+  const [tab, setTab] = useState("general");
+
   return (
     <div>
-      <PageHeader title="Settings" subtitle="Economics engine & system configuration" />
+      <PageHeader title="Settings" subtitle="System configuration, data operations and access" />
 
-      <div className="max-w-2xl">
-        <h3 className="text-xs font-semibold text-graphite-muted uppercase tracking-wider mb-3">Economics Engine</h3>
-        <div className="space-y-2">
-          {ENGINE_JOBS.map(job => (
-            <div key={job.fn} className="bg-graphite-panel border border-graphite-border rounded-lg p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-graphite-lighter flex items-center justify-center">
-                  <Cog className="w-4 h-4 text-graphite-muted" />
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-foreground">{job.name}</div>
-                  <div className="text-xs text-graphite-muted">{job.desc}</div>
-                  <div className="text-[10px] text-graphite-muted/70 mt-0.5 flex items-center gap-1">
-                    <Clock className="w-3 h-3" /> {job.schedule}
-                  </div>
-                </div>
-              </div>
-              <SyncNowButton fn={job.fn} />
-            </div>
+      <Tabs value={tab} onValueChange={setTab}>
+        <TabsList className="flex flex-wrap h-auto bg-graphite-panel border border-graphite-border p-1 gap-1">
+          {TABS.map((t) => (
+            <TabsTrigger key={t.value} value={t.value} className="text-xs data-[state=active]:bg-brand-red data-[state=active]:text-white text-graphite-muted">
+              {t.label}
+            </TabsTrigger>
           ))}
+        </TabsList>
+
+        <div className="mt-5">
+          <TabsContent value="general" className="mt-0"><div className="max-w-2xl"><GeneralPanel /></div></TabsContent>
+          <TabsContent value="data-sources" className="mt-0"><DataSources embedded /></TabsContent>
+          <TabsContent value="import" className="mt-0"><ImportCenter embedded /></TabsContent>
+          <TabsContent value="pipeline" className="mt-0"><PipelineHealthPanel /></TabsContent>
+          <TabsContent value="payout" className="mt-0"><div className="max-w-3xl"><PayoutRulesPanel /></div></TabsContent>
+          <TabsContent value="budgets" className="mt-0"><div className="max-w-3xl"><BudgetsPanel /></div></TabsContent>
+          <TabsContent value="billing" className="mt-0"><div className="max-w-3xl"><BillingCyclesPanel /></div></TabsContent>
+          <TabsContent value="creativeos" className="mt-0"><div className="max-w-2xl"><CreativeOsSetting /></div></TabsContent>
+          <TabsContent value="users" className="mt-0"><UsersRoles /></TabsContent>
         </div>
-
-        <h3 className="text-xs font-semibold text-graphite-muted uppercase tracking-wider mb-3 mt-8">Integrations</h3>
-        <CreativeOsSetting />
-
-        {isOwner && (
-          <>
-            <h3 className="text-xs font-semibold text-brand-red uppercase tracking-wider mb-3 mt-8">Danger Zone</h3>
-            <DataReset />
-          </>
-        )}
-      </div>
+      </Tabs>
     </div>
   );
 }

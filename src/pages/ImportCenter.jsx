@@ -36,7 +36,7 @@ function coerceRecords(records, importType) {
   });
 }
 
-export default function ImportCenter() {
+export default function ImportCenter({ embedded = false }) {
   const { toast } = useToast();
   const [importType, setImportType] = useState('leads');
   const [file, setFile] = useState(null);
@@ -103,7 +103,7 @@ export default function ImportCenter() {
 
   return (
     <div>
-      <PageHeader title="Import Center" subtitle="Import CSV/Excel files — preview the mapping before committing" />
+      {!embedded && <PageHeader title="Import Center" subtitle="Import CSV/Excel files — preview the mapping before committing" />}
 
       <div className="max-w-4xl">
         <div className="bg-graphite-panel border border-graphite-border rounded-lg p-6 space-y-4">
