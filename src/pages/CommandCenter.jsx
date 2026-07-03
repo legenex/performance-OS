@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { base44 } from "@/api/base44Client";
-import { useOutletContext } from "react-router-dom";
 import PageHeader from "@/components/shared/PageHeader";
 import MetricCard from "@/components/shared/MetricCard";
 import AlertsStrip from "@/components/command/AlertsStrip";
@@ -12,7 +11,6 @@ import { formatMoney } from "@/lib/formatters";
 import { TrendingUp, DollarSign, Clock } from "lucide-react";
 
 export default function CommandCenter() {
-  const { includeTest } = useOutletContext();
   const [snapshot, setSnapshot] = useState(null);
   const [snapshots, setSnapshots] = useState([]);
   const [loading, setLoading] = useState(true);
