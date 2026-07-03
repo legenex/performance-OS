@@ -18,6 +18,7 @@ import Receivables from '@/pages/Receivables';
 import Payables from '@/pages/Payables';
 import TruePnL from '@/pages/TruePnL';
 import ImportCenter from '@/pages/ImportCenter';
+import DataSources from '@/pages/DataSources';
 import Settings from '@/pages/Settings';
 
 const AuthenticatedApp = () => {
@@ -54,6 +55,7 @@ const AuthenticatedApp = () => {
           <Route path="/payables" element={<Payables />} />
           <Route path="/pnl" element={<TruePnL />} />
           <Route path="/import" element={<ImportCenter />} />
+          <Route path="/data-sources" element={<DataSources />} />
           <Route path="/settings" element={<Settings />} />
         </Route>
       </Route>

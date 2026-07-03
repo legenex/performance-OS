@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Landmark, FileText, Users, BarChart3,
-  Upload, Settings, BookOpen, Zap, ChevronLeft, ChevronRight
+  Upload, Settings, Database, ChevronLeft, ChevronRight
 } from "lucide-react";
 
 const navGroups = [
@@ -20,6 +20,7 @@ const navGroups = [
     label: "OPS",
     items: [
       { label: "Import Center", path: "/import", icon: Upload },
+      { label: "Data & Sources", path: "/data-sources", icon: Database },
     ]
   },
   {
