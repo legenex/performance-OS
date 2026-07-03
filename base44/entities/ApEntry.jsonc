@@ -1,0 +1,38 @@
+{
+  "name": "ApEntry",
+  "type": "object",
+  "properties": {
+    "supplier": {
+      "type": "string"
+    },
+    "entry_type": {
+      "type": "string",
+      "enum": [
+        "accrual",
+        "payment",
+        "adjustment",
+        "opening",
+        "supplier_statement"
+      ]
+    },
+    "amount": {
+      "type": "number"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "ref": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "supplier",
+    "entry_type",
+    "amount",
+    "date"
+  ]
+}

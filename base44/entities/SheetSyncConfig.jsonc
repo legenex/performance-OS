@@ -1,0 +1,37 @@
+{
+  "name": "SheetSyncConfig",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "sheet_url": {
+      "type": "string"
+    },
+    "tab": {
+      "type": "string"
+    },
+    "column_mapping": {
+      "type": "string"
+    },
+    "last_synced_row": {
+      "type": "number"
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "monetization",
+        "disposition",
+        "revshare_statement",
+        "calls",
+        "feedback",
+        "walker",
+        "partner_spend"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "target"
+  ]
+}

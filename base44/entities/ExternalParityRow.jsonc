@@ -1,0 +1,30 @@
+{
+  "name": "ExternalParityRow",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "metric": {
+      "type": "string"
+    },
+    "external_value": {
+      "type": "number"
+    },
+    "internal_value": {
+      "type": "number"
+    },
+    "variance_pct": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "source",
+    "date",
+    "metric"
+  ]
+}

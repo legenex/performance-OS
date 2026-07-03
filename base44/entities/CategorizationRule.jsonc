@@ -1,0 +1,25 @@
+{
+  "name": "CategorizationRule",
+  "type": "object",
+  "properties": {
+    "pattern": {
+      "type": "string"
+    },
+    "account_scope": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "counterparty": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "pattern",
+    "category"
+  ]
+}

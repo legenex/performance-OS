@@ -1,0 +1,29 @@
+{
+  "name": "SyncRun",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finished_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rows_in": {
+      "type": "number"
+    },
+    "rows_upserted": {
+      "type": "number"
+    },
+    "errors": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "source"
+  ]
+}

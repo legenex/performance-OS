@@ -1,0 +1,62 @@
+{
+  "name": "AdSpend",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "platform": {
+      "type": "string"
+    },
+    "account_id": {
+      "type": "string"
+    },
+    "account_name": {
+      "type": "string"
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "ad_set": {
+      "type": "string"
+    },
+    "ad": {
+      "type": "string"
+    },
+    "cost": {
+      "type": "number"
+    },
+    "impressions": {
+      "type": "number"
+    },
+    "clicks": {
+      "type": "number"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "api",
+        "sheet",
+        "import"
+      ]
+    },
+    "superseded": {
+      "type": "boolean",
+      "default": false
+    },
+    "supplier_sid_parsed": {
+      "type": "string"
+    },
+    "vertical_parsed": {
+      "type": "string"
+    },
+    "structure_tokens": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "platform"
+  ]
+}

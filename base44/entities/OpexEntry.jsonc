@@ -1,0 +1,34 @@
+{
+  "name": "OpexEntry",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "basis": {
+      "type": "string",
+      "enum": [
+        "booked",
+        "cash"
+      ]
+    },
+    "source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "category",
+    "amount"
+  ]
+}

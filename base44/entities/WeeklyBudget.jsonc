@@ -1,0 +1,25 @@
+{
+  "name": "WeeklyBudget",
+  "type": "object",
+  "properties": {
+    "week_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "media_cap": {
+      "type": "number"
+    },
+    "owner_draw": {
+      "type": "number"
+    },
+    "arrears_paydown": {
+      "type": "number"
+    },
+    "staff_payroll": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "week_of"
+  ]
+}

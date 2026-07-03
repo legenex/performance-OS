@@ -1,0 +1,33 @@
+{
+  "name": "ArPayment",
+  "type": "object",
+  "properties": {
+    "invoice_id": {
+      "type": "string"
+    },
+    "buyer_name": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "method": {
+      "type": "string"
+    },
+    "bank_transaction_id": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "buyer_name",
+    "amount",
+    "date"
+  ]
+}

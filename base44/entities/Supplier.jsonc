@@ -1,0 +1,41 @@
+{
+  "name": "Supplier",
+  "type": "object",
+  "properties": {
+    "sid": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "payout_model": {
+      "type": "string",
+      "enum": [
+        "revshare_revenue",
+        "revshare_net_profit",
+        "flat_accepted",
+        "flat_posted",
+        "none"
+      ]
+    },
+    "payout_value": {
+      "type": "number"
+    },
+    "per_list_overrides": {
+      "type": "string"
+    },
+    "clawback_on_return": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "sid",
+    "name"
+  ]
+}

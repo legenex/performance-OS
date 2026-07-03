@@ -1,0 +1,61 @@
+{
+  "name": "DailyRollup",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "vertical": {
+      "type": "string"
+    },
+    "supplier_sid": {
+      "type": "string"
+    },
+    "buyer_name": {
+      "type": "string"
+    },
+    "accident_state": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "leads": {
+      "type": "number"
+    },
+    "sold": {
+      "type": "number"
+    },
+    "returned": {
+      "type": "number"
+    },
+    "dq": {
+      "type": "number"
+    },
+    "revenue": {
+      "type": "number"
+    },
+    "net_revenue": {
+      "type": "number"
+    },
+    "payout_accrued": {
+      "type": "number"
+    },
+    "media_cost": {
+      "type": "number"
+    },
+    "cost_deduction": {
+      "type": "number"
+    },
+    "profit": {
+      "type": "number"
+    },
+    "net_profit": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "date"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "OwnerLedgerEntry",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "owner_draw",
+        "owner_investment",
+        "personal",
+        "related_party_next"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "type",
+    "amount"
+  ]
+}

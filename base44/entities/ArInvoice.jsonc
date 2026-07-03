@@ -1,0 +1,52 @@
+{
+  "name": "ArInvoice",
+  "type": "object",
+  "properties": {
+    "buyer_name": {
+      "type": "string"
+    },
+    "billing_cycle": {
+      "type": "string"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "lead_count": {
+      "type": "number"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "due_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "sent",
+        "paid",
+        "partial",
+        "overdue",
+        "disputed"
+      ]
+    },
+    "source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "buyer_name",
+    "amount"
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "lead_key": {
+      "type": "string"
+    },
+    "leadbyte_id": {
+      "type": "string"
+    },
+    "leadshook_id": {
+      "type": "string"
+    },
+    "lp_lead_id": {
+      "type": "string"
+    },
+    "tc_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sold_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "feedback_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lead_vertical": {
+      "type": "string"
+    },
+    "lead_status": {
+      "type": "string",
+      "enum": [
+        "Sold",
+        "Unsold",
+        "Disqualified",
+        "Returned",
+        "Rejected",
+        "Queued",
+        "Fake",
+        "Calls",
+        "NoCost"
+      ]
+    },
+    "is_test": {
+      "type": "boolean",
+      "default": false
+    },
+    "buyer_id": {
+      "type": "string"
+    },
+    "buyer_name": {
+      "type": "string"
+    },
+    "supplier_sid": {
+      "type": "string"
+    },
+    "supplier_ssid": {
+      "type": "string"
+    },
+    "supplier_source": {
+      "type": "string"
+    },
+    "supplier_brand": {
+      "type": "string"
+    },
+    "supplier_s1": {
+      "type": "string"
+    },
+    "supplier_s2": {
+      "type": "string"
+    },
+    "supplier_s3": {
+      "type": "string"
+    },
+    "utm_source": {
+      "type": "string"
+    },
+    "utm_campaign": {
+      "type": "string"
+    },
+    "utm_medium": {
+      "type": "string"
+    },
+    "utm_content": {
+      "type": "string"
+    },
+    "utm_ad_label": {
+      "type": "string"
+    },
+    "accident_state": {
+      "type": "string"
+    },
+    "geo_state": {
+      "type": "string"
+    },
+    "injured": {
+      "type": "string"
+    },
+    "injury_type": {
+      "type": "string"
+    },
+    "treatment": {
+      "type": "string"
+    },
+    "treatment_type": {
+      "type": "string"
+    },
+    "treatment_time": {
+      "type": "string"
+    },
+    "fault": {
+      "type": "string"
+    },
+    "attorney": {
+      "type": "string"
+    },
+    "insurance": {
+      "type": "string"
+    },
+    "police_report": {
+      "type": "string"
+    },
+    "contact_phone_verified": {
+      "type": "boolean"
+    },
+    "trustedform_present": {
+      "type": "boolean"
+    },
+    "lead_revenue": {
+      "type": "number"
+    },
+    "lead_net_revenue": {
+      "type": "number"
+    },
+    "supplier_payout": {
+      "type": "number"
+    },
+    "cost_deduction": {
+      "type": "number"
+    },
+    "profit": {
+      "type": "number"
+    },
+    "net_profit": {
+      "type": "number"
+    },
+    "billing_cycle": {
+      "type": "string"
+    },
+    "buyer_returned": {
+      "type": "boolean"
+    },
+    "buyer_return_reason": {
+      "type": "string"
+    },
+    "buyer_conversion": {
+      "type": "boolean"
+    },
+    "buyer_case_count": {
+      "type": "number"
+    },
+    "source_tag": {
+      "type": "string",
+      "enum": [
+        "gateway",
+        "leadbyte",
+        "leadshook",
+        "import"
+      ]
+    },
+    "sync_run_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "lead_key"
+  ]
+}

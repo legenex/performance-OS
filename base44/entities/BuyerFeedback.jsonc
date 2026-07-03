@@ -1,0 +1,40 @@
+{
+  "name": "BuyerFeedback",
+  "type": "object",
+  "properties": {
+    "lead_key": {
+      "type": "string"
+    },
+    "buyer": {
+      "type": "string"
+    },
+    "feedback_ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dispo": {
+      "type": "string"
+    },
+    "converted": {
+      "type": "boolean"
+    },
+    "returned": {
+      "type": "boolean"
+    },
+    "return_reason": {
+      "type": "string"
+    },
+    "case_count": {
+      "type": "number"
+    },
+    "revenue_confirmed": {
+      "type": "number"
+    },
+    "source_sheet": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "lead_key"
+  ]
+}

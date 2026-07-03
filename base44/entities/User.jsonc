@@ -1,0 +1,16 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "owner",
+        "ops",
+        "media_buyer",
+        "infra"
+      ],
+      "default": "ops"
+    }
+  }
+}

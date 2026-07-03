@@ -1,0 +1,22 @@
+{
+  "name": "StateConfig",
+  "type": "object",
+  "properties": {
+    "state_code": {
+      "type": "string"
+    },
+    "state_name": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "state_code"
+  ]
+}

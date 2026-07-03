@@ -1,0 +1,50 @@
+{
+  "name": "CreativeBrief",
+  "type": "object",
+  "properties": {
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string"
+    },
+    "campaign_name_suggested": {
+      "type": "string"
+    },
+    "supplier_sid": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "budget": {
+      "type": "number"
+    },
+    "cost_cap": {
+      "type": "number"
+    },
+    "audience_note": {
+      "type": "string"
+    },
+    "angles": {
+      "type": "string"
+    },
+    "compliance_notes": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "sent_to_creativeos"
+      ]
+    },
+    "handoff_payload": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "campaign_name_suggested"
+  ]
+}

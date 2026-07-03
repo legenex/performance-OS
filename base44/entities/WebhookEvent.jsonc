@@ -1,0 +1,25 @@
+{
+  "name": "WebhookEvent",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string"
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "raw_payload": {
+      "type": "string"
+    },
+    "parse_status": {
+      "type": "string"
+    },
+    "lead_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "source"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "AdAccount",
+  "type": "object",
+  "properties": {
+    "account_id": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string"
+    },
+    "business_manager": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "default_supplier_sid": {
+      "type": "string"
+    },
+    "account_class": {
+      "type": "string",
+      "enum": [
+        "owned_api",
+        "partner_sheet"
+      ]
+    },
+    "connection_status": {
+      "type": "string"
+    },
+    "spend_source": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "account_id"
+  ]
+}

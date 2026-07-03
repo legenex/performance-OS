@@ -1,0 +1,32 @@
+{
+  "name": "MediaLedgerRow",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "platform": {
+      "type": "string"
+    },
+    "account_name": {
+      "type": "string"
+    },
+    "tracked_spend": {
+      "type": "number"
+    },
+    "bank_spend": {
+      "type": "number"
+    },
+    "gap": {
+      "type": "number"
+    },
+    "month": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "platform"
+  ]
+}

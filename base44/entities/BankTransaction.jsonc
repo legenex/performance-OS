@@ -1,0 +1,36 @@
+{
+  "name": "BankTransaction",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "account_ref": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "category": {
+      "type": "string"
+    },
+    "counterparty": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "match_status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "description",
+    "amount"
+  ]
+}

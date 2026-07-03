@@ -1,0 +1,25 @@
+{
+  "name": "BankAccount",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "account_type": {
+      "type": "string"
+    },
+    "current_balance": {
+      "type": "number"
+    },
+    "last_synced": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

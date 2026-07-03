@@ -1,0 +1,43 @@
+{
+  "name": "MonetizationEvent",
+  "type": "object",
+  "properties": {
+    "lead_key": {
+      "type": "string"
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "profitshare_24m",
+        "profitshare_dq_unsold",
+        "calls",
+        "other"
+      ]
+    },
+    "conversion_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "revenue": {
+      "type": "number"
+    },
+    "payout_pct": {
+      "type": "number"
+    },
+    "payout_amount": {
+      "type": "number"
+    },
+    "legenex_profit": {
+      "type": "number"
+    },
+    "source_sheet": {
+      "type": "string"
+    },
+    "list_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "lead_key"
+  ]
+}

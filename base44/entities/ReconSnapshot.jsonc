@@ -1,0 +1,28 @@
+{
+  "name": "ReconSnapshot",
+  "type": "object",
+  "properties": {
+    "week_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "cash": {
+      "type": "number"
+    },
+    "ar_total": {
+      "type": "number"
+    },
+    "ap_total": {
+      "type": "number"
+    },
+    "media_gap": {
+      "type": "number"
+    },
+    "monday_number": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "week_of"
+  ]
+}

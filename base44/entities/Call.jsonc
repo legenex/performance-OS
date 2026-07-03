@@ -1,0 +1,49 @@
+{
+  "name": "Call",
+  "type": "object",
+  "properties": {
+    "call_id": {
+      "type": "string"
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "buyer": {
+      "type": "string"
+    },
+    "payout": {
+      "type": "number"
+    },
+    "converted": {
+      "type": "boolean"
+    },
+    "duration": {
+      "type": "number"
+    },
+    "retainer_price": {
+      "type": "number"
+    },
+    "state": {
+      "type": "string"
+    },
+    "call_type": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "ringba",
+        "walker",
+        "callcenter",
+        "retreaver"
+      ]
+    }
+  },
+  "required": [
+    "call_id"
+  ]
+}

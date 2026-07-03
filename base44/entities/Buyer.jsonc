@@ -1,0 +1,30 @@
+{
+  "name": "Buyer",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "buyer_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "ipl_fee": {
+      "type": "number"
+    },
+    "billing_terms": {
+      "type": "string"
+    },
+    "active_states": {
+      "type": "string"
+    },
+    "price_bands": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
