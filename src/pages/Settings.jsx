@@ -1,6 +1,7 @@
 import React from "react";
 import PageHeader from "@/components/shared/PageHeader";
 import SyncNowButton from "@/components/sources/SyncNowButton";
+import CreativeOsSetting from "@/components/settings/CreativeOsSetting";
 import { Cog, Clock } from "lucide-react";
 
 const ENGINE_JOBS = [

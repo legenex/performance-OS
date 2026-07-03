@@ -2,7 +2,7 @@
   "name": "User",
   "type": "object",
   "properties": {
-    "role": {
+    "app_role": {
       "type": "string",
       "enum": [
         "owner",
@@ -10,7 +10,8 @@
         "media_buyer",
         "infra"
       ],
-      "default": "ops"
+      "default": "ops",
+      "description": "Functional role within PerformanceOS controlling screen access."
     }
   }
 }

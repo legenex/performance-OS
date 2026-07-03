@@ -1,0 +1,16 @@
+{
+  "name": "AppSetting",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "Unique setting key, e.g. creativeos_webhook_url"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "key"
+  ]
+}

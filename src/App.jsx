@@ -12,7 +12,8 @@ import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ResetPassword from '@/pages/ResetPassword';
 import AppLayout from '@/components/layout/AppLayout';
-import CommandCenter from '@/pages/CommandCenter';
+import RoleRoute from '@/components/RoleRoute';
+import HomeRedirect from '@/components/HomeRedirect';
 import CashBanking from '@/pages/CashBanking';
 import Receivables from '@/pages/Receivables';
 import Payables from '@/pages/Payables';
@@ -20,6 +21,13 @@ import TruePnL from '@/pages/TruePnL';
 import ImportCenter from '@/pages/ImportCenter';
 import DataSources from '@/pages/DataSources';
 import Settings from '@/pages/Settings';
+import AdCommand from '@/pages/AdCommand';
+import AdAccounts from '@/pages/AdAccounts';
+import CampaignExplorer from '@/pages/CampaignExplorer';
+import CreativeIntelligence from '@/pages/CreativeIntelligence';
+import KnowledgeBase from '@/pages/KnowledgeBase';
+import OpsBoard from '@/pages/OpsBoard';
+import PipelineHealth from '@/pages/PipelineHealth';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -49,14 +57,27 @@ const AuthenticatedApp = () => {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<CommandCenter />} />
-          <Route path="/cash-banking" element={<CashBanking />} />
-          <Route path="/receivables" element={<Receivables />} />
-          <Route path="/payables" element={<Payables />} />
-          <Route path="/pnl" element={<TruePnL />} />
-          <Route path="/import" element={<ImportCenter />} />
-          <Route path="/data-sources" element={<DataSources />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route element={<RoleRoute />}>
+            <Route path="/" element={<HomeRedirect />} />
+            {/* MONEY */}
+            <Route path="/cash-banking" element={<CashBanking />} />
+            <Route path="/receivables" element={<Receivables />} />
+            <Route path="/payables" element={<Payables />} />
+            <Route path="/pnl" element={<TruePnL />} />
+            {/* AD INTELLIGENCE */}
+            <Route path="/ad-command" element={<AdCommand />} />
+            <Route path="/ad-accounts" element={<AdAccounts />} />
+            <Route path="/campaign-explorer" element={<CampaignExplorer />} />
+            <Route path="/creative-intelligence" element={<CreativeIntelligence />} />
+            <Route path="/knowledge-base" element={<KnowledgeBase />} />
+            {/* OPS */}
+            <Route path="/ops-board" element={<OpsBoard />} />
+            <Route path="/pipeline-health" element={<PipelineHealth />} />
+            <Route path="/import" element={<ImportCenter />} />
+            <Route path="/data-sources" element={<DataSources />} />
+            {/* SYSTEM */}
+            <Route path="/settings" element={<Settings />} />
+          </Route>
         </Route>
       </Route>
       <Route path="*" element={<PageNotFound />} />

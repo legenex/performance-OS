@@ -2,8 +2,12 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Landmark, FileText, Users, BarChart3,
-  Upload, Settings, Database, ChevronLeft, ChevronRight
+  Upload, Settings, Database, ChevronLeft, ChevronRight,
+  Radar, CreditCard, Compass, Sparkles, BookOpen,
+  ClipboardList, Activity
 } from "lucide-react";
+import { useAuth } from "@/lib/AuthContext";
+import { canAccess } from "@/lib/roles";
 
 const navGroups = [
   {
@@ -17,8 +21,20 @@ const navGroups = [
     ]
   },
   {
+    label: "AD INTELLIGENCE",
+    items: [
+      { label: "Ad Command", path: "/ad-command", icon: Radar },
+      { label: "Ad Accounts", path: "/ad-accounts", icon: CreditCard },
+      { label: "Campaign Explorer", path: "/campaign-explorer", icon: Compass },
+      { label: "Creative Intelligence", path: "/creative-intelligence", icon: Sparkles },
+      { label: "Knowledge Base", path: "/knowledge-base", icon: BookOpen },
+    ]
+  },
+  {
     label: "OPS",
     items: [
+      { label: "Ops Board", path: "/ops-board", icon: ClipboardList },
+      { label: "Pipeline Health", path: "/pipeline-health", icon: Activity },
       { label: "Import Center", path: "/import", icon: Upload },
       { label: "Data & Sources", path: "/data-sources", icon: Database },
     ]
@@ -33,20 +49,24 @@ const navGroups = [
 
 export default function Sidebar({ collapsed, setCollapsed }) {
   const location = useLocation();
+  const { user } = useAuth();
+
+  const visibleGroups = navGroups
+    .map((g) => ({ ...g, items: g.items.filter((i) => canAccess(user, i.path)) }))
+    .filter((g) => g.items.length > 0);
 
   return (
     <aside className={`h-full bg-graphite-base border-r border-graphite-border flex flex-col transition-all duration-200 ${collapsed ? 'w-16' : 'w-56'}`}>
       {/* Logo */}
       <div className="h-14 flex items-center px-4 border-b border-graphite-border shrink-0">
-        {!collapsed && (
+        {!collapsed ? (
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-brand-red rounded flex items-center justify-center">
               <span className="text-white text-xs font-bold">L</span>
             </div>
             <span className="text-sm font-semibold text-foreground tracking-tight">PerformanceOS</span>
           </div>
-        )}
-        {collapsed && (
+        ) : (
           <div className="w-8 h-8 bg-brand-red rounded flex items-center justify-center mx-auto">
             <span className="text-white text-xs font-bold">L</span>
           </div>
@@ -55,7 +75,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
 
       {/* Nav */}
       <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-4">
-        {navGroups.map((group) => (
+        {visibleGroups.map((group) => (
           <div key={group.label}>
             {!collapsed && (
               <div className="text-[10px] font-semibold text-graphite-muted uppercase tracking-widest px-2 mb-1.5">
@@ -64,7 +84,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             )}
             <div className="space-y-0.5">
               {group.items.map((item) => {
-                const active = location.pathname === item.path || 
+                const active = location.pathname === item.path ||
                   (item.path !== '/' && location.pathname.startsWith(item.path));
                 return (
                   <Link
