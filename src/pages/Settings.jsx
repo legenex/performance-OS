@@ -2,6 +2,9 @@ import React from "react";
 import PageHeader from "@/components/shared/PageHeader";
 import SyncNowButton from "@/components/sources/SyncNowButton";
 import CreativeOsSetting from "@/components/settings/CreativeOsSetting";
+import DataReset from "@/components/settings/DataReset";
+import { useAuth } from "@/lib/AuthContext";
+import { getRole } from "@/lib/roles";
 import { Cog, Clock } from "lucide-react";
 
 const ENGINE_JOBS = [
@@ -12,6 +15,8 @@ const ENGINE_JOBS = [
 ];
 
 export default function Settings() {
+  const { user } = useAuth();
+  const isOwner = getRole(user) === "owner";
   return (
     <div>
       <PageHeader title="Settings" subtitle="Economics engine & system configuration" />
@@ -37,6 +42,16 @@ export default function Settings() {
             </div>
           ))}
         </div>
+
+        <h3 className="text-xs font-semibold text-graphite-muted uppercase tracking-wider mb-3 mt-8">Integrations</h3>
+        <CreativeOsSetting />
+
+        {isOwner && (
+          <>
+            <h3 className="text-xs font-semibold text-brand-red uppercase tracking-wider mb-3 mt-8">Danger Zone</h3>
+            <DataReset />
+          </>
+        )}
       </div>
     </div>
   );
